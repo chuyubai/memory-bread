@@ -1,680 +1,715 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-
-  <link rel="apple-touch-icon" sizes="76x76" href="/memory-bread/img/fluid.png">
-  <link rel="icon" href="/memory-bread/img/fluid.png">
-  
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="记忆面包">
-  <meta name="keywords" content="烘焙, 面包, 配料公开, 热量透明">
-  
-    <meta name="description" content="好食材，透明配料，回归身体本身的好吃">
-<meta property="og:type" content="website">
-<meta property="og:title" content="记忆面包">
-<meta property="og:url" content="https://chuyubai.github.io/memory-bread/index.html">
-<meta property="og:site_name" content="记忆面包">
-<meta property="og:description" content="好食材，透明配料，回归身体本身的好吃">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="记忆面包">
-<meta property="article:tag" content="烘焙, 面包, 配料公开, 热量透明">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>记忆面包</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
-
-
-<link  rel="stylesheet" href="/memory-bread/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/memory-bread/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/memory-bread/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"chuyubai.github.io","root":"/memory-bread/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/memory-bread/local-search.xml","include_content_in_search":true};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>记忆面包 | 记忆中一味</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F5F0E8;
+      --cream-dark: #E8E0D5;
+      --brown: #2C1810;
+      --brown-light: #5C4033;
+      --accent: #C4713B;
+      --accent-dark: #A55C2B;
+      --white: #FFFFFF;
     }
-  </script>
-  <script  src="/memory-bread/js/utils.js" ></script>
-  <script  src="/memory-bread/js/color-schema.js" ></script>
-  
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  
-<meta name="generator" content="Hexo 8.1.2"></head>
+    body {
+      font-family: 'Noto Sans SC', -apple-system, sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      line-height: 1.8;
+      font-weight: 300;
+    }
 
+    /* 导航 */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 72px;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 80px;
+      z-index: 100;
+      border-bottom: 1px solid rgba(44,24,16,0.1);
+    }
 
+    nav .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--brown);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    nav .logo span {
+      font-weight: 400;
+      font-style: italic;
+      color: var(--brown-light);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 48px;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--brown);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover { opacity: 1; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 80px;
+      padding-top: 72px;
+      background: var(--cream);
+      position: relative;
+    }
+
+    .hero-content {
+      flex: 1;
+      max-width: 580px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      margin-bottom: 32px;
+      opacity: 0.7;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--brown);
+      margin-bottom: 8px;
+    }
+
+    .hero-title-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--brown-light);
+      margin-bottom: 40px;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      line-height: 2;
+      color: var(--brown-light);
+      margin-bottom: 48px;
+      max-width: 440px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--brown);
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid var(--brown);
+      transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 16px 40px;
+      background: transparent;
+      color: var(--brown);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid rgba(44,24,16,0.3);
+      transition: all 0.3s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--brown);
+      background: var(--brown);
+      color: var(--cream);
+    }
+
+    .hero-visual {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 500px;
+      aspect-ratio: 4/5;
+      background: var(--cream-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(44,24,16,0.1));
+    }
+
+    .hero-image-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 600;
+      color: var(--brown-light);
+      opacity: 0.15;
+      writing-mode: vertical-rl;
+    }
+
+    /* 分割线 */
+    .divider {
+      height: 1px;
+      background: rgba(44,24,16,0.15);
+      margin: 0 80px;
+    }
+
+    /* 理念 */
+    .philosophy {
+      padding: 120px 80px;
+      background: var(--white);
+    }
+
+    .philosophy-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-eyebrow {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      margin-bottom: 24px;
+      opacity: 0.6;
+    }
+
+    .philosophy-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--brown);
+      margin-bottom: 48px;
+    }
+
+    .philosophy-text em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* 产品 */
+    .products {
+      padding: 120px 80px;
+      background: var(--cream);
+    }
+
+    .products-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 80px;
+    }
+
+    .products-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.1;
+    }
+
+    .products-link {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--brown);
+      text-decoration: none;
+      border-bottom: 1px solid var(--brown);
+      padding-bottom: 2px;
+      transition: all 0.2s;
+    }
+
+    .products-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .product-card {
+      background: var(--white);
+      padding: 48px 32px;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .product-card:hover {
+      background: var(--brown);
+      color: var(--cream);
+    }
+
+    .product-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .product-desc {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      opacity: 0.7;
+      margin-bottom: 32px;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .product-link {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--accent);
+      transition: all 0.2s;
+    }
+
+    .product-card:hover .product-link { color: var(--cream); }
+
+    .product-meta {
+      font-size: 0.8rem;
+      opacity: 0.5;
+      margin-top: 8px;
+    }
+
+    /* 透明度 */
+    .transparency {
+      padding: 120px 80px;
+      background: var(--white);
+    }
+
+    .transparency-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .transparency-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 32px;
+    }
+
+    .transparency-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .transparency-desc {
+      font-size: 1rem;
+      line-height: 2;
+      color: var(--brown-light);
+      margin-bottom: 40px;
+    }
+
+    .transparency-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .transparency-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(44,24,16,0.1);
+      font-size: 0.95rem;
+    }
+
+    .transparency-item-name {
+      font-weight: 500;
+    }
+
+    .transparency-item-source {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--brown-light);
+      opacity: 0.7;
+    }
+
+    /* 关于 */
+    .about {
+      padding: 120px 80px;
+      background: var(--cream);
+    }
+
+    .about-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      margin-bottom: 48px;
+    }
+
+    .about-text {
+      font-size: 1rem;
+      line-height: 2.2;
+      color: var(--brown-light);
+      margin-bottom: 24px;
+    }
+
+    .about-text strong {
+      color: var(--brown);
+      font-weight: 500;
+    }
+
+    /* 社区 */
+    .community {
+      padding: 120px 80px;
+      background: var(--brown);
+      color: var(--cream);
+      text-align: center;
+    }
+
+    .community-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .community-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      opacity: 0.7;
+      margin-bottom: 48px;
+    }
+
+    .community-cta {
+      display: inline-block;
+      padding: 18px 48px;
+      background: var(--accent);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid var(--accent);
+      transition: all 0.3s;
+    }
+
+    .community-cta:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    /* 页脚 */
+    footer {
+      background: var(--cream-dark);
+      padding: 80px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--brown);
+      margin-bottom: 16px;
+    }
+
+    .footer-logo span {
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .footer-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--brown-light);
+      margin-bottom: 40px;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--brown-light);
+      opacity: 0.5;
+    }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .transparency-inner { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      nav ul { display: none; }
+      .hero { padding: 100px 24px 80px; flex-direction: column; }
+      .hero-visual { display: none; }
+      .philosophy, .products, .transparency, .about, .community { padding: 80px 24px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .products-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      footer { padding: 48px 24px; }
+    }
+  </style>
+</head>
 <body>
-  
 
-  <header>
-    
+  <nav>
+    <a href="/" class="logo">记忆<span> · 面包</span></a>
+    <ul>
+      <li><a href="#products">产品</a></li>
+      <li><a href="#transparency">配料</a></li>
+      <li><a href="#about">关于</a></li>
+      <li><a href="#community">社区</a></li>
+    </ul>
+  </nav>
 
-<div class="header-inner" style="height: 100vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/memory-bread/">
-      <strong>Fluid</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content (desktop) -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/memory-bread/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/memory-bread/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/memory-bread/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/memory-bread/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/memory-bread/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <i class="iconfont icon-search"></i>
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- Mobile grid menu overlay -->
-<div id="mobile-grid-menu" class="d-lg-none">
-  <div class="mobile-grid-menu-inner">
-    <div class="container">
-      <div class="row">
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/memory-bread/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-home-fill"></i>
-                  <span>首页</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/memory-bread/archives/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-archive-fill"></i>
-                  <span>归档</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/memory-bread/categories/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-category-fill"></i>
-                  <span>分类</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/memory-bread/tags/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-tags-fill"></i>
-                  <span>标签</span>
-                </div>
-              </a>
-            </div>
-          
-        
-          
-          
-          
-          
-            <div class="col-4 mobile-grid-cell">
-              <a href="/memory-bread/about/" target="_self">
-                <div class="mobile-grid-item">
-                  <i class="iconfont icon-user-fill"></i>
-                  <span>关于</span>
-                </div>
-              </a>
-            </div>
-          
-        
-        
-          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
-            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              <div class="mobile-grid-item">
-                <i class="iconfont icon-search"></i>
-                <span>搜索</span>
-              </div>
-            </a>
-          </div>
-        
-        
-          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
-               data-label-light="开灯"
-               data-label-dark="关灯">
-            <a href="javascript:;" aria-label="Color Toggle">
-              <div class="mobile-grid-item">
-                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
-                <span id="mobile-color-toggle-label">关灯</span>
-              </div>
-            </a>
-          </div>
-        
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">云南 · 昆明 · 2026</div>
+      <h1 class="hero-title">记忆中</h1>
+      <div class="hero-title-sub">一味</div>
+      <p class="hero-desc">
+        不迎合低价口味，不妥协于效率成本。
+        每一款出品，都是我们愿意每天吃、放心给孩子吃的东西。
+      </p>
+      <div class="hero-cta">
+        <a href="#products" class="btn-primary">看看产品</a>
+        <a href="#about" class="btn-ghost">了解我们</a>
       </div>
     </div>
-  </div>
-</div>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('/memory-bread/img/default.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text=""></span>
-          
-        </div>
-
-        
-      </div>
-
-      
-        <div class="scroll-down-bar">
-          <i class="iconfont icon-arrowdown"></i>
-        </div>
-      
-    </div>
-  </div>
-</div>
-
-
-
-</div>
-
-  </header>
-
-  <main>
-    
-      <div class="container nopadding-x-md">
-        <div id="board"
-          style="margin-top: 0">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<h1 style="display: none">记忆面包</h1>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/memory-bread/2026/07/07/hello-world/" target="_self">
-          关于记忆面包
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/memory-bread/2026/07/07/hello-world/" target="_self">
-        <div>
-          记忆中一味我们相信，好吃不是迎合出来的。 来自云南偏远农村，小时候能吃到好东西是一种奢侈。城里老师给孩子吃的手撕面包，那个画面至今记得。 现在，我们成为妈妈，孩子也爱甜食面食。我们认真学习烘焙，研究各种材料，才发现市面上太多产品并没有看起来那么美好。 好，一定是走在前的。 我们的理念很简单：  🥖 好食材，透明配料 🔥 公开热量，知情选择 💚 回归身体本身的好吃 🤝 收集记忆中的味道  不
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-07-07 00:00" pubdate>
-              2026-07-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/memory-bread/2026/07/05/honey-whole-wheat-bread/" target="_self">
-          云南百花蜜全麦面包
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/memory-bread/2026/07/05/honey-whole-wheat-bread/" target="_self">
-        <div>
-          云南百花蜜全麦面包小时候在农村，蜂蜜是稀罕物。舅妈家养了几窝土蜂，每年秋天收割一次，那香味——至今没有哪瓶工业蜂蜜能比。 这款面包用云南百花蜜代替普通糖，蜜香浓郁，全麦口感扎实却不硬。 配料表   配料 用量 说明    高筋全麦粉 300g 保留麸皮，营养更全   云南百花蜜 40g 土蜂蜜，蜜香自然   鲜酵母 8g 比干酵母风味更好   盐 5g 提味   水 220g 冰水，面团更弹
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-07-05 00:00" pubdate>
-              2026-07-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/memory-bread/categories/%E7%83%98%E7%84%99%E6%97%A5%E8%AE%B0/" class="category-chain-item">烘焙日记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/memory-bread/tags/%E5%85%A8%E9%BA%A6/">#全麦</a>
-            
-              <a href="/memory-bread/tags/%E8%9C%82%E8%9C%9C/">#蜂蜜</a>
-            
-              <a href="/memory-bread/tags/%E4%B9%A1%E6%9D%91%E9%9D%A2%E5%8C%85/">#乡村面包</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/memory-bread/2026/07/03/natural-leven-country-bread/" target="_self">
-          天然酵母乡村面包
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/memory-bread/2026/07/03/natural-leven-country-bread/" target="_self">
-        <div>
-          天然酵母乡村面包养天然酵母是一件需要耐心的事。每天喂它，看着它长大、成熟、稳定，像养一只小宠物。 酸种面包的酸味不是刺鼻的那种，是慢慢化开的麦香。乡村面包外脆内软，切开有漂亮的蜂窝气孔。 配料表   配料 用量 说明    高筋面粉 350g 筋度适中，支撑气孔   黑麦粉 50g 增加风味，延缓老化   天然酵母（鲁邦种） 150g 隔夜培养好的   水 300g 70%水含量，面团湿软   盐
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-07-03 00:00" pubdate>
-              2026-07-03
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/memory-bread/categories/%E7%83%98%E7%84%99%E6%97%A5%E8%AE%B0/" class="category-chain-item">烘焙日记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/memory-bread/tags/%E4%B9%A1%E6%9D%91%E9%9D%A2%E5%8C%85/">#乡村面包</a>
-            
-              <a href="/memory-bread/tags/%E5%A4%A9%E7%84%B6%E9%85%B5%E6%AF%8D/">#天然酵母</a>
-            
-              <a href="/memory-bread/tags/%E9%85%B8%E7%A7%8D/">#酸种</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/memory-bread/2026/07/01/coconut-cookies/" target="_self">
-          椰子油软曲奇
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/memory-bread/2026/07/01/coconut-cookies/" target="_self">
-        <div>
-          椰子油软曲奇市售曲奇几乎都是黄油+大量白糖，咬一口满嘴油。 这款用椰子油代替黄油，赤藓糖醇代替白糖，GI更低，不引起血糖剧烈波动。口感是软的那种，不是酥脆的，但越嚼越香。 配料表   配料 用量 说明    中筋面粉 200g 筋度低，口感更酥软   椰子油（液态） 80g 选用冷榨特级初榨   赤藓糖醇 60g 不参与血糖代谢   鸡蛋 1个 50g带壳   泡打粉 3g 少量，帮助蓬松   香
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2026-07-01 00:00" pubdate>
-              2026-07-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/memory-bread/categories/%E7%83%98%E7%84%99%E6%97%A5%E8%AE%B0/" class="category-chain-item">烘焙日记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/memory-bread/tags/%E6%9B%B2%E5%A5%87/">#曲奇</a>
-            
-              <a href="/memory-bread/tags/%E6%A4%B0%E5%AD%90%E6%B2%B9/">#椰子油</a>
-            
-              <a href="/memory-bread/tags/%E6%97%A0%E9%BB%84%E6%B2%B9/">#无黄油</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-
-
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    
-
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
+    <div class="hero-visual">
+      <div class="hero-image">
+        <div class="hero-image-text">Mémoire</div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-    
+  <div class="divider"></div>
 
-    
-  </main>
+  <section class="philosophy">
+    <div class="philosophy-inner">
+      <div class="section-eyebrow">Our Philosophy</div>
+      <p class="philosophy-text">
+        好，一定是走在前的。<br>
+        <em>不迎合口味，不妥协食材。</em><br>
+        好吃有很多种含义，<br>
+        最重要的一条是——回归身体本身。
+      </p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="products" id="products">
+    <div class="products-header">
+      <h2 class="products-title">产品列表</h2>
+      <a href="/archives/" class="products-link">查看全部烘焙日记 →</a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-tag">全麦 · 蜂蜜</div>
+        <h3 class="product-name">云南百花蜜<br>全麦面包</h3>
+        <p class="product-desc">外脆内软，蜜香浓郁。云南百花蜜代替普通糖，保留全麦麸皮。</p>
+        <div class="product-footer">
+          <div>
+            <div class="product-price">¥38</div>
+            <div class="product-meta">245 kcal / 100g</div>
+          </div>
+          <a href="/2026/07/05/honey-whole-wheat-bread/" class="product-link">看日记 →</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-tag">酸种 · 天然酵母</div>
+        <h3 class="product-name">天然酵母<br>乡村面包</h3>
+        <p class="product-desc">外脆内软，酸种风味，麦香悠长。天然酵母培养，风味更丰富。</p>
+        <div class="product-footer">
+          <div>
+            <div class="product-price">¥42</div>
+            <div class="product-meta">268 kcal / 100g</div>
+          </div>
+          <a href="/2026/07/03/natural-leven-country-bread/" class="product-link">看日记 →</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-tag">椰子油 · 无黄油</div>
+        <h3 class="product-name">椰子油<br>软曲奇</h3>
+        <p class="product-desc">软糯口感，椰香自然。赤藓糖醇替代白糖，GI 更低。</p>
+        <div class="product-footer">
+          <div>
+            <div class="product-price">¥28 / 8块</div>
+            <div class="product-meta">85 kcal / 块</div>
+          </div>
+          <a href="/2026/07/01/coconut-cookies/" class="product-link">看日记 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="transparency" id="transparency">
+    <div class="transparency-inner">
+      <div>
+        <div class="section-eyebrow">Full Transparency</div>
+        <h2 class="transparency-title">每一个数字<br>都有<em>依据</em></h2>
+        <p class="transparency-desc">
+          我们的配料表没有"等量配料"、"风味添加剂"这类模糊描述。
+          每款产品的热量都标注来源和计算方式。
+          知情选择，放心吃。
+        </p>
+        <a href="#products" class="btn-primary">查看配料</a>
+      </div>
+      <div class="transparency-list">
+        <div class="transparency-item">
+          <span class="transparency-item-name">云南百花蜜</span>
+          <span class="transparency-item-source">云南·西双版纳</span>
+        </div>
+        <div class="transparency-item">
+          <span class="transparency-item-name">高筋全麦粉</span>
+          <span class="transparency-item-source">有机认证</span>
+        </div>
+        <div class="transparency-item">
+          <span class="transparency-item-name">特级初榨橄榄油</span>
+          <span class="transparency-item-source">冷榨进口</span>
+        </div>
+        <div class="transparency-item">
+          <span class="transparency-item-name">天然酵母（鲁邦种）</span>
+          <span class="transparency-item-source">自养·零添加</span>
+        </div>
+        <div class="transparency-item">
+          <span class="transparency-item-name">赤藓糖醇</span>
+          <span class="transparency-item-source">不参与血糖代谢</span>
+        </div>
+        <div class="transparency-item">
+          <span class="transparency-item-name">冷榨椰子油</span>
+          <span class="transparency-item-source">泰国·特级初榨</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="section-eyebrow">Our Story</div>
+      <h2 class="about-title">记忆中一味，好食材是底线</h2>
+      <p class="about-text">
+        来自云南偏远农村，小时候能吃到好东西是一种奢侈。城里老师给孩子吃的手撕面包，那个画面至今记得。
+      </p>
+      <p class="about-text">
+        现在我们成为妈妈，认真学习烘焙，研究各种材料，才发现市面上太多产品并没有看起来那么美好。<strong>好，一定是走在前的。</strong>
+      </p>
+      <p class="about-text">
+        我们想做一个<strong>吃货社区</strong>，汇聚口味相投的人，一起分享记忆中的味道，共同成长。
+      </p>
+    </div>
+  </section>
+
+  <section class="community" id="community">
+    <h2 class="community-title">加入我们</h2>
+    <p class="community-sub">汇聚口味相投的吃货，分享记忆中的味道</p>
+    <a href="/feedback/" class="community-cta">给我留言反馈</a>
+  </section>
 
   <footer>
-    <div class="footer-inner">
-  
-    <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-    </div>
-  
-  
-  
-</div>
-
+    <div class="footer-logo">记忆<span> · 面包</span></div>
+    <p class="footer-sub">好食材，透明配料，回归身体本身的好吃</p>
+    <p class="footer-copy">© 2026 记忆面包 · 昆明</p>
   </footer>
 
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/memory-bread/js/events.js" ></script>
-<script  src="/memory-bread/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/memory-bread/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  <script  src="/memory-bread/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/memory-bread/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
 </body>
 </html>
