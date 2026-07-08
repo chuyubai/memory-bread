@@ -79,26 +79,25 @@
     /* Hero */
     .hero {
       min-height: 100vh;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
       padding: 0 80px;
       padding-top: 72px;
       background: var(--cream);
-      position: relative;
     }
 
     .hero-content {
-      flex: 1;
-      max-width: 580px;
+      padding-right: 80px;
     }
 
     .hero-eyebrow {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--brown-light);
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       opacity: 0.7;
     }
 
@@ -118,32 +117,32 @@
       font-weight: 400;
       font-style: italic;
       color: var(--brown-light);
-      margin-bottom: 40px;
+      margin-bottom: 32px;
     }
 
     .hero-desc {
       font-size: 1rem;
       line-height: 2;
       color: var(--brown-light);
-      margin-bottom: 48px;
+      margin-bottom: 40px;
       max-width: 440px;
     }
 
     .hero-cta {
       display: flex;
-      gap: 20px;
-      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
     .btn-primary {
       display: inline-block;
-      padding: 16px 40px;
+      padding: 14px 32px;
       background: var(--brown);
       color: var(--cream);
       text-decoration: none;
       font-size: 0.8rem;
       font-weight: 500;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       border: 1px solid var(--brown);
       transition: all 0.3s;
@@ -156,13 +155,13 @@
 
     .btn-ghost {
       display: inline-block;
-      padding: 16px 40px;
+      padding: 14px 32px;
       background: transparent;
       color: var(--brown);
       text-decoration: none;
       font-size: 0.8rem;
       font-weight: 500;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       border: 1px solid rgba(44,24,16,0.3);
       transition: all 0.3s;
@@ -175,86 +174,236 @@
     }
 
     .hero-visual {
-      flex: 1;
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       align-items: center;
     }
 
-    .hero-image {
+    .hero-image-box {
       width: 100%;
-      max-width: 500px;
+      max-width: 420px;
       aspect-ratio: 4/5;
       background: var(--cream-dark);
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-image::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, rgba(44,24,16,0.1));
+      border: 1px solid rgba(44,24,16,0.08);
     }
 
     .hero-image-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 5rem;
+      font-size: 4rem;
       font-weight: 600;
       color: var(--brown-light);
-      opacity: 0.15;
+      opacity: 0.12;
       writing-mode: vertical-rl;
     }
 
-    /* 分割线 */
-    .divider {
-      height: 1px;
-      background: rgba(44,24,16,0.15);
-      margin: 0 80px;
-    }
-
-    /* 理念 */
-    .philosophy {
-      padding: 120px 80px;
-      background: var(--white);
-    }
-
-    .philosophy-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
+    /* 通用 */
+    .section {
+      padding: 100px 80px;
     }
 
     .section-eyebrow {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--brown-light);
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       opacity: 0.6;
     }
 
-    .philosophy-text {
+    .section-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--brown);
+      font-size: clamp(1.8rem, 3.5vw, 3rem);
+      font-weight: 600;
+      line-height: 1.2;
       margin-bottom: 48px;
     }
 
-    .philosophy-text em {
+    .divider {
+      height: 1px;
+      background: rgba(44,24,16,0.12);
+      margin: 0 80px;
+    }
+
+    /* 品类导航 */
+    .categories {
+      padding: 80px;
+      background: var(--white);
+    }
+
+    .categories-header {
+      margin-bottom: 48px;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+    }
+
+    .category-card {
+      background: var(--cream);
+      padding: 40px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .category-card:hover {
+      background: var(--brown);
+      color: var(--cream);
+    }
+
+    .category-card:hover .category-emoji,
+    .category-card:hover .category-name,
+    .category-card:hover .category-count {
+      color: var(--cream);
+    }
+
+    .category-emoji {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      display: block;
+      transition: color 0.3s;
+    }
+
+    .category-name {
+      font-weight: 500;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+
+    .category-count {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
       font-style: italic;
+      color: var(--brown-light);
+      opacity: 0.6;
+      transition: color 0.3s;
+    }
+
+    /* 找专属口味测试 */
+    .quiz {
+      background: var(--brown);
+      color: var(--cream);
+      padding: 100px 80px;
+    }
+
+    .quiz-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .quiz-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .quiz-desc {
+      font-size: 1rem;
+      line-height: 1.9;
+      opacity: 0.7;
+      margin-bottom: 40px;
+    }
+
+    .quiz-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .quiz-step {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.95rem;
+    }
+
+    .quiz-step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
       color: var(--accent);
+      width: 32px;
+    }
+
+    .quiz-cta {
+      display: inline-block;
+      padding: 16px 40px;
+      background: var(--accent);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--accent);
+      transition: all 0.3s;
+    }
+
+    .quiz-cta:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .quiz-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 48px;
+    }
+
+    .quiz-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .quiz-card-question {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      opacity: 0.7;
+      margin-bottom: 24px;
+    }
+
+    .quiz-card-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quiz-option {
+      padding: 14px 20px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--cream);
+      font-size: 0.9rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .quiz-option:hover {
+      background: var(--accent);
+      border-color: var(--accent);
     }
 
     /* 产品 */
     .products {
-      padding: 120px 80px;
+      padding: 100px 80px;
       background: var(--cream);
     }
 
@@ -262,19 +411,12 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 80px;
-    }
-
-    .products-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 600;
-      line-height: 1.1;
+      margin-bottom: 48px;
     }
 
     .products-link {
       font-size: 0.8rem;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--brown);
       text-decoration: none;
@@ -296,8 +438,7 @@
 
     .product-card {
       background: var(--white);
-      padding: 48px 32px;
-      position: relative;
+      padding: 40px 28px;
       transition: all 0.3s;
     }
 
@@ -309,26 +450,26 @@
     .product-tag {
       font-family: 'Cormorant Garamond', serif;
       font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       font-style: italic;
     }
 
     .product-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 600;
       line-height: 1.2;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .product-desc {
-      font-size: 0.9rem;
-      line-height: 1.8;
-      opacity: 0.7;
-      margin-bottom: 32px;
+      font-size: 0.85rem;
+      line-height: 1.7;
+      opacity: 0.65;
+      margin-bottom: 24px;
     }
 
     .product-footer {
@@ -339,7 +480,7 @@
 
     .product-price {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 600;
     }
 
@@ -349,21 +490,67 @@
       text-transform: uppercase;
       text-decoration: none;
       color: var(--accent);
-      transition: all 0.2s;
+      transition: color 0.2s;
     }
 
     .product-card:hover .product-link { color: var(--cream); }
 
     .product-meta {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       opacity: 0.5;
-      margin-top: 8px;
+      margin-top: 4px;
+    }
+
+    /* 大家印象 */
+    .impressions {
+      padding: 100px 80px;
+      background: var(--white);
+    }
+
+    .impressions-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+
+    .impressions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .impression-card {
+      background: var(--cream);
+      padding: 36px;
+      border: 1px solid rgba(44,24,16,0.08);
+    }
+
+    .impression-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      color: var(--brown);
+    }
+
+    .impression-author {
+      font-size: 0.85rem;
+      color: var(--brown-light);
+      opacity: 0.7;
+    }
+
+    .impression-product {
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-top: 4px;
     }
 
     /* 透明度 */
     .transparency {
-      padding: 120px 80px;
-      background: var(--white);
+      padding: 100px 80px;
+      background: var(--cream);
     }
 
     .transparency-inner {
@@ -375,10 +562,10 @@
 
     .transparency-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 600;
       line-height: 1.2;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
 
     .transparency-title em {
@@ -387,29 +574,27 @@
     }
 
     .transparency-desc {
-      font-size: 1rem;
-      line-height: 2;
+      font-size: 0.95rem;
+      line-height: 1.9;
       color: var(--brown-light);
-      margin-bottom: 40px;
+      margin-bottom: 32px;
     }
 
     .transparency-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
     }
 
     .transparency-item {
       display: flex;
       justify-content: space-between;
-      padding: 20px 0;
+      padding: 14px 0;
       border-bottom: 1px solid rgba(44,24,16,0.1);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
-    .transparency-item-name {
-      font-weight: 500;
-    }
+    .transparency-item-name { font-weight: 500; }
 
     .transparency-item-source {
       font-family: 'Cormorant Garamond', serif;
@@ -419,40 +604,9 @@
       opacity: 0.7;
     }
 
-    /* 关于 */
-    .about {
-      padding: 120px 80px;
-      background: var(--cream);
-    }
-
-    .about-inner {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .about-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 600;
-      margin-bottom: 48px;
-    }
-
-    .about-text {
-      font-size: 1rem;
-      line-height: 2.2;
-      color: var(--brown-light);
-      margin-bottom: 24px;
-    }
-
-    .about-text strong {
-      color: var(--brown);
-      font-weight: 500;
-    }
-
     /* 社区 */
     .community {
-      padding: 120px 80px;
+      padding: 100px 80px;
       background: var(--brown);
       color: var(--cream);
       text-align: center;
@@ -460,31 +614,32 @@
 
     .community-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 600;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .community-sub {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-style: italic;
-      opacity: 0.7;
-      margin-bottom: 48px;
+      opacity: 0.65;
+      margin-bottom: 40px;
     }
 
     .community-cta {
       display: inline-block;
-      padding: 18px 48px;
+      padding: 16px 40px;
       background: var(--accent);
       color: var(--white);
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 500;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       border: 1px solid var(--accent);
       transition: all 0.3s;
+      margin-bottom: 16px;
     }
 
     .community-cta:hover {
@@ -495,16 +650,16 @@
     /* 页脚 */
     footer {
       background: var(--cream-dark);
-      padding: 80px;
+      padding: 60px 80px;
       text-align: center;
     }
 
     .footer-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 600;
       color: var(--brown);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .footer-logo span {
@@ -514,33 +669,37 @@
 
     .footer-sub {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-style: italic;
       color: var(--brown-light);
-      margin-bottom: 40px;
+      margin-bottom: 32px;
     }
 
     .footer-copy {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--brown-light);
       opacity: 0.5;
     }
 
     /* 响应式 */
     @media (max-width: 1024px) {
+      .categories-grid { grid-template-columns: repeat(3, 1fr); }
       .products-grid { grid-template-columns: 1fr 1fr; }
+      .impressions-grid { grid-template-columns: 1fr 1fr; }
+      .quiz-inner { grid-template-columns: 1fr; gap: 48px; }
       .transparency-inner { grid-template-columns: 1fr; gap: 48px; }
     }
 
     @media (max-width: 768px) {
       nav { padding: 0 24px; }
       nav ul { display: none; }
-      .hero { padding: 100px 24px 80px; flex-direction: column; }
+      .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
       .hero-visual { display: none; }
-      .philosophy, .products, .transparency, .about, .community { padding: 80px 24px; }
+      .section, .categories, .quiz, .products, .impressions, .transparency, .community { padding: 60px 24px; }
+      .categories-grid { grid-template-columns: 1fr 1fr; }
       .products-grid { grid-template-columns: 1fr; }
-      .products-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-      footer { padding: 48px 24px; }
+      .impressions-grid { grid-template-columns: 1fr; }
+      footer { padding: 40px 24px; }
     }
   </style>
 </head>
@@ -549,29 +708,31 @@
   <nav>
     <a href="/" class="logo">记忆<span> · 面包</span></a>
     <ul>
+      <li><a href="#categories">品类</a></li>
+      <li><a href="#quiz">测口味</a></li>
       <li><a href="#products">产品</a></li>
-      <li><a href="#transparency">配料</a></li>
-      <li><a href="#about">关于</a></li>
+      <li><a href="#impressions">印象</a></li>
       <li><a href="#community">社区</a></li>
     </ul>
   </nav>
 
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-eyebrow">云南 · 昆明 · 2026</div>
       <h1 class="hero-title">记忆中</h1>
       <div class="hero-title-sub">一味</div>
       <p class="hero-desc">
-        不迎合低价口味，不妥协于效率成本。
+        不迎合低价口味，不妥协于效率成本。<br>
         每一款出品，都是我们愿意每天吃、放心给孩子吃的东西。
       </p>
       <div class="hero-cta">
-        <a href="#products" class="btn-primary">看看产品</a>
-        <a href="#about" class="btn-ghost">了解我们</a>
+        <a href="#quiz" class="btn-primary">测专属口味</a>
+        <a href="#categories" class="btn-ghost">浏览品类</a>
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-image">
+      <div class="hero-image-box">
         <div class="hero-image-text">Mémoire</div>
       </div>
     </div>
@@ -579,30 +740,97 @@
 
   <div class="divider"></div>
 
-  <section class="philosophy">
-    <div class="philosophy-inner">
-      <div class="section-eyebrow">Our Philosophy</div>
-      <p class="philosophy-text">
-        好，一定是走在前的。<br>
-        <em>不迎合口味，不妥协食材。</em><br>
-        好吃有很多种含义，<br>
-        最重要的一条是——回归身体本身。
-      </p>
+  <!-- 品类导航 -->
+  <section class="categories" id="categories">
+    <div class="categories-header">
+      <div class="section-eyebrow">Our Selection</div>
+      <h2 class="section-title">找到你的那一款</h2>
+    </div>
+    <div class="categories-grid">
+      <div class="category-card">
+        <span class="category-emoji">🍞</span>
+        <div class="category-name">甜面包</div>
+        <div class="category-count">柔软甜蜜 · 日常小确幸</div>
+      </div>
+      <div class="category-card">
+        <span class="category-emoji">🥖</span>
+        <div class="category-name">欧包</div>
+        <div class="category-count">外脆内软 · 麦香悠长</div>
+      </div>
+      <div class="category-card">
+        <span class="category-emoji">🍞</span>
+        <div class="category-name">吐司</div>
+        <div class="category-count">百搭基础 · 变化无穷</div>
+      </div>
+      <div class="category-card">
+        <span class="category-emoji">🥘</span>
+        <div class="category-name">料理面包</div>
+        <div class="category-count">烹饪搭档 · 创意无限</div>
+      </div>
+      <div class="category-card">
+        <span class="category-emoji">💪</span>
+        <div class="category-name">减脂专区</div>
+        <div class="category-count">低卡高纤 · 轻体无负担</div>
+      </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
+  <!-- 找专属口味测试 -->
+  <section class="quiz" id="quiz">
+    <div class="quiz-inner">
+      <div>
+        <div class="section-eyebrow" style="color: rgba(245,240,232,0.5);">Find Your Taste</div>
+        <h2 class="quiz-title">不知道从哪款开始？</h2>
+        <p class="quiz-desc">
+          每个人对口味的偏好都不同。我们设计了简单的小测试，帮你找到最适合自己的面包。
+        </p>
+        <div class="quiz-steps">
+          <div class="quiz-step">
+            <span class="quiz-step-num">01</span>
+            <span>回答3个简单问题</span>
+          </div>
+          <div class="quiz-step">
+            <span class="quiz-step-num">02</span>
+            <span>了解你的口味偏好</span>
+          </div>
+          <div class="quiz-step">
+            <span class="quiz-step-num">03</span>
+            <span>获得专属推荐</span>
+          </div>
+        </div>
+        <a href="#quiz" class="quiz-cta">开始测试</a>
+      </div>
+      <div class="quiz-card">
+        <div class="quiz-card-title">小试一下 · 第一题</div>
+        <p class="quiz-card-question">你更喜欢哪种口感？</p>
+        <div class="quiz-card-options">
+          <button class="quiz-option">🫐 软软的，像日式牛奶面包</button>
+          <button class="quiz-option">🥖 扎实的，有嚼劲的</button>
+          <button class="quiz-option">🍞 外脆内软，有惊喜感</button>
+          <button class="quiz-option">🥐 酥脆的，黄油香浓郁</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 产品列表 -->
   <section class="products" id="products">
     <div class="products-header">
-      <h2 class="products-title">产品列表</h2>
+      <div>
+        <div class="section-eyebrow">Our Products</div>
+        <h2 class="section-title">产品列表</h2>
+      </div>
       <a href="/archives/" class="products-link">查看全部烘焙日记 →</a>
     </div>
     <div class="products-grid">
       <div class="product-card">
-        <div class="product-tag">全麦 · 蜂蜜</div>
+        <div class="product-tag">全麦 · 蜂蜜 · 欧包</div>
         <h3 class="product-name">云南百花蜜<br>全麦面包</h3>
-        <p class="product-desc">外脆内软，蜜香浓郁。云南百花蜜代替普通糖，保留全麦麸皮。</p>
+        <p class="product-desc">外脆内软，蜜香浓郁。云南百花蜜代替普通糖。</p>
         <div class="product-footer">
           <div>
             <div class="product-price">¥38</div>
@@ -612,9 +840,9 @@
         </div>
       </div>
       <div class="product-card">
-        <div class="product-tag">酸种 · 天然酵母</div>
+        <div class="product-tag">酸种 · 天然酵母 · 欧包</div>
         <h3 class="product-name">天然酵母<br>乡村面包</h3>
-        <p class="product-desc">外脆内软，酸种风味，麦香悠长。天然酵母培养，风味更丰富。</p>
+        <p class="product-desc">外脆内软，酸种风味，麦香悠长。天然酵母培养。</p>
         <div class="product-footer">
           <div>
             <div class="product-price">¥42</div>
@@ -624,7 +852,7 @@
         </div>
       </div>
       <div class="product-card">
-        <div class="product-tag">椰子油 · 无黄油</div>
+        <div class="product-tag">椰子油 · 无黄油 · 甜面包</div>
         <h3 class="product-name">椰子油<br>软曲奇</h3>
         <p class="product-desc">软糯口感，椰香自然。赤藓糖醇替代白糖，GI 更低。</p>
         <div class="product-footer">
@@ -640,6 +868,37 @@
 
   <div class="divider"></div>
 
+  <!-- 大家印象 -->
+  <section class="impressions" id="impressions">
+    <div class="impressions-header">
+      <div>
+        <div class="section-eyebrow">Community</div>
+        <h2 class="section-title">大家印象</h2>
+      </div>
+      <a href="/feedback/" class="products-link">分享你的印象 →</a>
+    </div>
+    <div class="impressions-grid">
+      <div class="impression-card">
+        <p class="impression-quote">"终于找到一款吃完不会胃胀的面包，酸种发酵真的很不一样。"</p>
+        <div class="impression-author">@小红书用户 · 茜茜</div>
+        <div class="impression-product">→ 天然酵母乡村面包</div>
+      </div>
+      <div class="impression-card">
+        <p class="impression-quote">"给孩子吃很放心，配料表干净得让人感动。"</p>
+        <div class="impression-author">@昆明妈妈 · 豆豆妈</div>
+        <div class="impression-product">→ 云南百花蜜全麦面包</div>
+      </div>
+      <div class="impression-card">
+        <p class="impression-quote">"减脂期吃这个曲奇，一点罪恶感都没有，推荐给闺蜜了。"</p>
+        <div class="impression-author">@健身爱好者 · 阿雅</div>
+        <div class="impression-product">→ 椰子油软曲奇</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 配料透明 -->
   <section class="transparency" id="transparency">
     <div class="transparency-inner">
       <div>
@@ -647,10 +906,9 @@
         <h2 class="transparency-title">每一个数字<br>都有<em>依据</em></h2>
         <p class="transparency-desc">
           我们的配料表没有"等量配料"、"风味添加剂"这类模糊描述。
-          每款产品的热量都标注来源和计算方式。
-          知情选择，放心吃。
+          每款产品的热量都标注来源和计算方式。知情选择，放心吃。
         </p>
-        <a href="#products" class="btn-primary">查看配料</a>
+        <a href="#products" class="btn-primary" style="background: var(--accent); border-color: var(--accent);">查看配料</a>
       </div>
       <div class="transparency-list">
         <div class="transparency-item">
@@ -681,27 +939,10 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <section class="about" id="about">
-    <div class="about-inner">
-      <div class="section-eyebrow">Our Story</div>
-      <h2 class="about-title">记忆中一味，好食材是底线</h2>
-      <p class="about-text">
-        来自云南偏远农村，小时候能吃到好东西是一种奢侈。城里老师给孩子吃的手撕面包，那个画面至今记得。
-      </p>
-      <p class="about-text">
-        现在我们成为妈妈，认真学习烘焙，研究各种材料，才发现市面上太多产品并没有看起来那么美好。<strong>好，一定是走在前的。</strong>
-      </p>
-      <p class="about-text">
-        我们想做一个<strong>吃货社区</strong>，汇聚口味相投的人，一起分享记忆中的味道，共同成长。
-      </p>
-    </div>
-  </section>
-
+  <!-- 社区 -->
   <section class="community" id="community">
-    <h2 class="community-title">加入我们</h2>
-    <p class="community-sub">汇聚口味相投的吃货，分享记忆中的味道</p>
+    <h2 class="community-title">加入吃货社区</h2>
+    <p class="community-sub">汇聚口味相投的人，分享记忆中的味道，共同成长</p>
     <a href="/feedback/" class="community-cta">给我留言反馈</a>
   </section>
 
