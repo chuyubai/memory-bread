@@ -10,7 +10,6 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
       --ink: #0A0A0A;
       --ink-light: #6B6B6B;
@@ -19,9 +18,7 @@
       --accent: #C4713B;
       --border: rgba(10,10,10,0.08);
     }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: 'Inter', -apple-system, sans-serif;
       background: var(--cream);
@@ -30,376 +27,197 @@
       font-weight: 300;
       -webkit-font-smoothing: antialiased;
     }
-
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      position: fixed; top: 0; left: 0; right: 0; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 0 80px;
-      background: rgba(250,249,247,0.9);
+      background: rgba(250,249,247,0.92);
       backdrop-filter: blur(20px);
       z-index: 100;
       border-bottom: 1px solid var(--border);
     }
-
     .nav-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      color: var(--ink);
+      font-size: 1.1rem; color: var(--ink);
       text-decoration: none;
     }
-
     .nav-logo em { font-style: italic; color: var(--ink-light); }
-
     .nav-links { display: flex; gap: 40px; list-style: none; }
-
     .nav-links a {
-      font-size: 0.8rem;
-      color: var(--ink-light);
-      text-decoration: none;
-      letter-spacing: 0.03em;
+      font-size: 0.8rem; color: var(--ink-light);
+      text-decoration: none; letter-spacing: 0.03em;
       transition: color 0.2s;
     }
-
     .nav-links a:hover { color: var(--ink); }
 
-    /* Hero */
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      display: flex; flex-direction: column; justify-content: center;
       padding: 120px 80px 80px;
     }
-
     .hero-eyebrow {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      margin-bottom: 28px;
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink-light); margin-bottom: 28px;
     }
-
     .hero-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(4rem, 10vw, 8rem);
-      font-weight: 400;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      margin-bottom: 6px;
+      font-weight: 400; line-height: 0.95;
+      letter-spacing: -0.02em; margin-bottom: 6px;
     }
-
     .hero-title-sub {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.8rem, 4vw, 3.2rem);
-      font-weight: 400;
-      font-style: italic;
-      color: var(--ink-light);
-      margin-bottom: 40px;
+      font-weight: 400; font-style: italic;
+      color: var(--ink-light); margin-bottom: 40px;
     }
-
     .hero-desc {
-      font-size: 0.95rem;
-      line-height: 1.85;
-      color: var(--ink-light);
-      max-width: 440px;
-      margin-bottom: 44px;
+      font-size: 0.95rem; line-height: 1.85;
+      color: var(--ink-light); max-width: 400px; margin-bottom: 44px;
     }
-
     .hero-cta { display: flex; gap: 16px; }
-
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-flex; align-items: center; gap: 8px;
       padding: 13px 26px;
-      background: var(--ink);
-      color: var(--cream);
-      text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      border: 1px solid var(--ink);
-      transition: all 0.25s;
+      background: var(--ink); color: var(--cream);
+      text-decoration: none; font-size: 0.78rem;
+      font-weight: 500; letter-spacing: 0.05em;
+      border: 1px solid var(--ink); transition: all 0.25s;
     }
-
     .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
-
     .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 26px;
-      background: transparent;
-      color: var(--ink);
-      text-decoration: none;
-      font-size: 0.78rem;
-      font-weight: 500;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; background: transparent;
+      color: var(--ink); text-decoration: none;
+      font-size: 0.78rem; font-weight: 500;
       letter-spacing: 0.05em;
-      border: 1px solid rgba(10,10,10,0.15);
-      transition: all 0.25s;
+      border: 1px solid rgba(10,10,10,0.15); transition: all 0.25s;
     }
-
     .btn-ghost:hover { border-color: var(--ink); background: var(--cream-dark); }
 
-    /* Categories */
-    .categories {
-      padding: 100px 80px;
-      background: var(--cream);
-    }
-
+    section { padding: 100px 80px; }
     .section-label {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      margin-bottom: 16px;
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--ink-light); margin-bottom: 16px;
     }
-
     .section-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 400;
-      margin-bottom: 48px;
+      font-weight: 400; margin-bottom: 48px;
     }
-
     .section-title em { font-style: italic; color: var(--ink-light); }
 
+    .categories { padding: 100px 80px; background: var(--cream); }
     .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
     }
-
     .category-card {
-      background: var(--cream);
-      padding: 40px 24px;
-      text-align: center;
-      cursor: pointer;
+      background: var(--cream); padding: 40px 20px;
+      text-align: center; cursor: pointer;
       transition: background 0.25s;
     }
-
     .category-card:hover { background: var(--cream-dark); }
-
     .category-emoji { font-size: 1.8rem; margin-bottom: 16px; display: block; }
-
     .category-name {
       font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      margin-bottom: 6px;
+      font-size: 1rem; margin-bottom: 6px;
     }
-
     .category-desc { font-size: 0.72rem; color: var(--ink-light); line-height: 1.5; }
 
-    /* Products */
-    .products {
-      padding: 100px 80px;
-      background: var(--cream-dark);
-    }
-
+    .products { padding: 100px 80px; background: var(--cream-dark); }
     .products-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 48px;
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 48px;
     }
-
     .products-more {
-      font-size: 0.78rem;
-      color: var(--ink-light);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      font-size: 0.78rem; color: var(--ink-light);
+      text-decoration: none; display: flex; align-items: center; gap: 6px;
       transition: color 0.2s;
     }
-
     .products-more:hover { color: var(--ink); }
-
     .products-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
     }
-
     .product-card {
-      background: var(--cream);
-      padding: 40px 32px;
+      background: var(--cream); padding: 40px 32px;
       transition: background 0.25s;
     }
-
     .product-card:hover { background: #FFFFFF; }
-
     .product-tag {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px;
     }
-
     .product-name {
       font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      font-weight: 400;
-      line-height: 1.2;
-      margin-bottom: 12px;
+      font-size: 1.3rem; font-weight: 400;
+      line-height: 1.2; margin-bottom: 12px;
     }
-
     .product-desc {
-      font-size: 0.83rem;
-      line-height: 1.7;
-      color: var(--ink-light);
-      margin-bottom: 24px;
+      font-size: 0.83rem; line-height: 1.7;
+      color: var(--ink-light); margin-bottom: 24px;
     }
-
-    .product-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
+    .product-footer { display: flex; justify-content: space-between; align-items: center; }
     .product-price { font-family: 'Playfair Display', serif; font-size: 1rem; }
-
     .product-meta { font-size: 0.7rem; color: var(--ink-light); opacity: 0.6; margin-top: 2px; }
-
     .product-link {
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: var(--ink-light);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      font-size: 0.72rem; font-weight: 500;
+      color: var(--ink-light); text-decoration: none;
+      display: flex; align-items: center; gap: 5px;
       transition: color 0.2s;
     }
-
     .product-link:hover { color: var(--ink); }
 
-    /* Quiz */
     .quiz {
-      padding: 100px 80px;
-      background: var(--ink);
+      padding: 100px 80px; background: var(--ink);
       color: var(--cream);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: center;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 100px; align-items: center;
     }
-
     .quiz-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.8rem, 3.5vw, 3rem);
-      font-weight: 400;
-      line-height: 1.2;
-      margin-bottom: 24px;
+      font-weight: 400; line-height: 1.2; margin-bottom: 24px;
     }
-
     .quiz-title em { font-style: italic; color: var(--accent); }
-
     .quiz-desc {
-      font-size: 0.88rem;
-      line-height: 1.85;
-      color: rgba(250,249,247,0.5);
-      margin-bottom: 36px;
+      font-size: 0.88rem; line-height: 1.85;
+      color: rgba(250,249,247,0.5); margin-bottom: 36px;
     }
-
     .quiz-steps { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-
     .quiz-step { display: flex; align-items: center; gap: 14px; font-size: 0.85rem; color: rgba(250,249,247,0.65); }
-
-    .quiz-step-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      color: var(--accent);
-      width: 26px;
-    }
-
+    .quiz-step-num { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--accent); width: 26px; }
     .quiz-card {
       background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 40px;
+      border: 1px solid rgba(255,255,255,0.08); padding: 40px;
     }
-
-    .quiz-card-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      margin-bottom: 6px;
-    }
-
+    .quiz-card-title { font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 6px; }
     .quiz-card-q { font-size: 0.78rem; color: rgba(250,249,247,0.4); margin-bottom: 24px; }
-
     .quiz-options { display: flex; flex-direction: column; gap: 6px; }
-
     .quiz-option {
-      padding: 12px 16px;
-      background: transparent;
+      padding: 12px 16px; background: transparent;
       border: 1px solid rgba(255,255,255,0.1);
-      color: rgba(250,249,247,0.65);
-      font-size: 0.83rem;
-      text-align: left;
-      cursor: pointer;
-      font-family: inherit;
+      color: rgba(250,249,247,0.65); font-size: 0.83rem;
+      text-align: left; cursor: pointer; font-family: inherit;
       transition: all 0.2s;
     }
+    .quiz-option:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.2); color: var(--cream); }
 
-    .quiz-option:hover {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.2);
-      color: var(--cream);
-    }
+    .community { padding: 100px 80px; background: var(--cream); text-align: center; }
+    .community-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 400; margin-bottom: 16px; }
+    .community-sub { font-size: 0.88rem; color: var(--ink-light); margin-bottom: 40px; }
 
-    /* Community */
-    .community {
-      padding: 100px 80px;
-      background: var(--cream);
-      text-align: center;
-    }
-
-    .community-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3.5vw, 3rem);
-      font-weight: 400;
-      margin-bottom: 16px;
-    }
-
-    .community-sub {
-      font-size: 0.88rem;
-      color: var(--ink-light);
-      margin-bottom: 40px;
-    }
-
-    /* Footer */
     footer {
-      padding: 48px 80px;
-      background: var(--cream-dark);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 48px 80px; background: var(--cream-dark);
+      display: flex; justify-content: space-between; align-items: center;
       border-top: 1px solid var(--border);
     }
-
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
-      color: var(--ink);
-      text-decoration: none;
-    }
-
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: var(--ink); text-decoration: none; }
     .footer-logo em { font-style: italic; color: var(--ink-light); }
-
     .footer-copy { font-size: 0.7rem; color: var(--ink-light); opacity: 0.5; }
 
     @media (max-width: 1024px) {
@@ -407,11 +225,10 @@
       .products-grid { grid-template-columns: 1fr 1fr; }
       .quiz { grid-template-columns: 1fr; gap: 60px; }
     }
-
     @media (max-width: 768px) {
-      nav { padding: 0 24px; }
-      nav .nav-links { display: none; }
-      .hero, .categories, .products, .quiz, .community { padding: 64px 24px; }
+      nav { padding: 0 24px; } nav .nav-links { display: none; }
+      .hero, section { padding: 64px 24px; }
+      .categories, .products, .quiz, .community { padding: 64px 24px; }
       .categories-grid { grid-template-columns: 1fr 1fr; }
       .products-grid { grid-template-columns: 1fr; }
       footer { padding: 36px 24px; flex-direction: column; gap: 12px; text-align: center; }
@@ -431,24 +248,21 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-eyebrow">云南 · 昆明 · 2026</div>
+    <div class="hero-eyebrow">深圳 · 2026</div>
     <h1 class="hero-title">记忆中</h1>
     <div class="hero-title-sub">一味</div>
     <p class="hero-desc">
-      不迎合低价口味，不妥协于效率成本。<br>
-      每一款出品，都是我们愿意每天吃、放心给孩子吃的东西。
+      好食材，透明配料，不妥协。<br>
+      帮你找到记忆中的好吃，发掘新的好吃。
     </p>
     <div class="hero-cta">
-      <a href="#quiz" class="btn-primary">
-        测专属口味
-        <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
-      </a>
-      <a href="#products" class="btn-ghost">浏览产品</a>
+      <a href="#quiz" class="btn-primary">测专属口味 <i data-lucide="arrow-right" style="width:13px;height:13px;"></i></a>
+      <a href="#products" class="btn-ghost">看产品</a>
     </div>
   </section>
 
   <section class="categories" id="categories">
-    <div class="section-label">Our Selection</div>
+    <div class="section-label">Selection</div>
     <h2 class="section-title">找到你的<em>那一款</em></h2>
     <div class="categories-grid">
       <div class="category-card">
@@ -482,55 +296,46 @@
   <section class="products" id="products">
     <div class="products-header">
       <div>
-        <div class="section-label">Our Products</div>
+        <div class="section-label">Products</div>
         <h2 class="section-title">产品列表</h2>
       </div>
-      <a href="/archives/" class="products-more">
-        查看全部日记
-        <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
-      </a>
+      <a href="/archives/" class="products-more">全部日记 <i data-lucide="arrow-right" style="width:13px;height:13px;"></i></a>
     </div>
     <div class="products-grid">
       <div class="product-card">
         <div class="product-tag">全麦 · 蜂蜜 · 欧包</div>
         <h3 class="product-name">云南百花蜜<br>全麦面包</h3>
-        <p class="product-desc">外脆内软，蜜香浓郁。云南百花蜜代替普通糖，保留全麦麸皮。</p>
+        <p class="product-desc">外脆内软，蜜香浓郁。百花蜜代替白糖，全麦麸皮保留。</p>
         <div class="product-footer">
           <div>
             <div class="product-price">¥38</div>
             <div class="product-meta">245 kcal / 100g</div>
           </div>
-          <a href="/2026/07/05/honey-whole-wheat-bread/" class="product-link">
-            查看详情 <i data-lucide="arrow-right" style="width:11px;height:11px;"></i>
-          </a>
+          <a href="/2026/07/05/honey-whole-wheat-bread/" class="product-link">详情 <i data-lucide="arrow-right" style="width:11px;height:11px;"></i></a>
         </div>
       </div>
       <div class="product-card">
         <div class="product-tag">酸种 · 天然酵母 · 欧包</div>
         <h3 class="product-name">天然酵母<br>乡村面包</h3>
-        <p class="product-desc">外脆内软，酸种风味，麦香悠长。天然酵母培养，风味更丰富。</p>
+        <p class="product-desc">外脆内软，酸种风味，麦香悠长。天然酵母自养。</p>
         <div class="product-footer">
           <div>
             <div class="product-price">¥42</div>
             <div class="product-meta">268 kcal / 100g</div>
           </div>
-          <a href="/2026/07/03/natural-leven-country-bread/" class="product-link">
-            查看详情 <i data-lucide="arrow-right" style="width:11px;height:11px;"></i>
-          </a>
+          <a href="/2026/07/03/natural-leven-country-bread/" class="product-link">详情 <i data-lucide="arrow-right" style="width:11px;height:11px;"></i></a>
         </div>
       </div>
       <div class="product-card">
         <div class="product-tag">椰子油 · 无黄油 · 甜面包</div>
         <h3 class="product-name">椰子油<br>软曲奇</h3>
-        <p class="product-desc">软糯口感，椰香自然。赤藓糖醇替代白糖，GI 更低。</p>
+        <p class="product-desc">软糯口感，椰香自然。赤藓糖醇代糖，GI更低。</p>
         <div class="product-footer">
           <div>
             <div class="product-price">¥28 / 8块</div>
             <div class="product-meta">85 kcal / 块</div>
           </div>
-          <a href="/2026/07/01/coconut-cookies/" class="product-link">
-            查看详情 <i data-lucide="arrow-right" style="width:11px;height:11px;"></i>
-          </a>
+          <a href="/2026/07/01/coconut-cookies/" class="product-link">详情 <i data-lucide="arrow-right" style="width:11px;height:11px;"></i></a>
         </div>
       </div>
     </div>
@@ -540,18 +345,13 @@
     <div>
       <div class="section-label" style="color: rgba(250,249,247,0.4);">Find Your Taste</div>
       <h2 class="quiz-title">不知道从<em>哪款</em>开始？</h2>
-      <p class="quiz-desc">
-        回答3个简单问题，找到最适合自己的面包。每个人口味不同，我们帮你找到专属的那一款。
-      </p>
+      <p class="quiz-desc">3个问题，找到你的专属推荐。每个人的口味都不同，我们帮你发现。</p>
       <div class="quiz-steps">
         <div class="quiz-step"><span class="quiz-step-num">01</span><span>回答3个简单问题</span></div>
         <div class="quiz-step"><span class="quiz-step-num">02</span><span>了解你的口味偏好</span></div>
         <div class="quiz-step"><span class="quiz-step-num">03</span><span>获得专属推荐</span></div>
       </div>
-      <a href="#quiz" class="btn-primary" style="background: var(--accent); border-color: var(--accent);">
-        开始测试
-        <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
-      </a>
+      <a href="#quiz" class="btn-primary" style="background: var(--accent); border-color: var(--accent);">开始测试 <i data-lucide="arrow-right" style="width:13px;height:13px;"></i></a>
     </div>
     <div class="quiz-card">
       <div class="quiz-card-title">小试一下 · 第一题</div>
@@ -565,18 +365,15 @@
     </div>
   </section>
 
-  <section class="community" id="community">
-    <h2 class="community-title">加入吃货社区</h2>
-    <p class="community-sub">汇聚口味相投的人，分享记忆中的味道</p>
-    <a href="/feedback/" class="btn-primary">
-      给我留言反馈
-      <i data-lucide="arrow-right" style="width:13px;height:13px;"></i>
-    </a>
+  <section class="community">
+    <h2 class="community-title">加入我们</h2>
+    <p class="community-sub">分享你的印象，帮更多人找到好吃的</p>
+    <a href="/feedback/" class="btn-primary">留言反馈 <i data-lucide="arrow-right" style="width:13px;height:13px;"></i></a>
   </section>
 
   <footer>
     <a href="/" class="footer-logo">记忆<em>·</em>面包</a>
-    <p class="footer-copy">© 2026 记忆面包 · 昆明</p>
+    <p class="footer-copy">© 2026 记忆面包 · 深圳</p>
   </footer>
 
   <script>lucide.createIcons();</script>
