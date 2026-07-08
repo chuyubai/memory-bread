@@ -5,147 +5,179 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>记忆面包 | 记忆中一味</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    :root {
-      --cream: #F5F0E8;
-      --cream-dark: #E8E0D5;
-      --brown: #2C1810;
-      --brown-light: #5C4033;
-      --accent: #C4713B;
-      --accent-dark: #A55C2B;
-      --white: #FFFFFF;
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --ink: #0A0A0A;
+      --ink-light: #6B6B6B;
+      --cream: #FAF9F7;
+      --cream-dark: #F0EDE8;
+      --accent: #C4713B;
+      --border: rgba(10,10,10,0.08);
+      --border-strong: rgba(10,10,10,0.15);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
 
     body {
-      font-family: 'Noto Sans SC', -apple-system, sans-serif;
+      font-family: 'Inter', -apple-system, sans-serif;
       background: var(--cream);
-      color: var(--brown);
-      line-height: 1.8;
+      color: var(--ink);
+      line-height: 1.6;
       font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* 导航 */
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* Navigation */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: 72px;
-      background: var(--cream);
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 80px;
+      background: rgba(250,249,247,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       z-index: 100;
-      border-bottom: 1px solid rgba(44,24,16,0.1);
+      border-bottom: 1px solid var(--border);
     }
 
-    nav .logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: var(--brown);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-
-    nav .logo span {
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
       font-weight: 400;
-      font-style: italic;
-      color: var(--brown-light);
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.02em;
     }
 
-    nav ul {
+    .nav-logo em {
+      font-style: italic;
+      color: var(--ink-light);
+    }
+
+    .nav-links {
       display: flex;
       gap: 48px;
       list-style: none;
     }
 
-    nav a {
-      color: var(--brown);
-      text-decoration: none;
-      font-size: 0.85rem;
+    .nav-links a {
+      font-size: 0.8rem;
       font-weight: 400;
-      letter-spacing: 0.08em;
-      opacity: 0.7;
-      transition: opacity 0.2s;
+      color: var(--ink-light);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
     }
 
-    nav a:hover { opacity: 1; }
+    .nav-links a:hover { color: var(--ink); }
 
     /* Hero */
     .hero {
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 0 80px;
-      padding-top: 72px;
-      background: var(--cream);
-    }
-
-    .hero-content {
-      padding-right: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 80px 80px;
+      position: relative;
     }
 
     .hero-eyebrow {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.8rem;
-      letter-spacing: 0.25em;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--brown-light);
-      margin-bottom: 24px;
-      opacity: 0.7;
+      color: var(--ink-light);
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.8s ease forwards 0.2s;
     }
 
     .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3.5rem, 7vw, 6.5rem);
-      font-weight: 600;
-      line-height: 1.05;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 400;
+      line-height: 0.95;
       letter-spacing: -0.02em;
-      color: var(--brown);
       margin-bottom: 8px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.9s ease forwards 0.4s;
     }
 
     .hero-title-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3.5rem);
       font-weight: 400;
       font-style: italic;
-      color: var(--brown-light);
-      margin-bottom: 32px;
+      color: var(--ink-light);
+      margin-bottom: 56px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.9s ease forwards 0.55s;
     }
 
     .hero-desc {
       font-size: 1rem;
-      line-height: 2;
-      color: var(--brown-light);
-      margin-bottom: 40px;
-      max-width: 440px;
+      line-height: 1.8;
+      color: var(--ink-light);
+      max-width: 480px;
+      margin-bottom: 56px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.8s ease forwards 0.7s;
     }
 
     .hero-cta {
       display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
+      gap: 20px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.8s ease forwards 0.85s;
     }
 
     .btn-primary {
-      display: inline-block;
-      padding: 14px 32px;
-      background: var(--brown);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--ink);
       color: var(--cream);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: 1px solid var(--brown);
-      transition: all 0.3s;
+      letter-spacing: 0.06em;
+      border: 1px solid var(--ink);
+      transition: all 0.25s;
     }
 
     .btn-primary:hover {
@@ -154,322 +186,306 @@
     }
 
     .btn-ghost {
-      display: inline-block;
-      padding: 14px 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
       background: transparent;
-      color: var(--brown);
+      color: var(--ink);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: 1px solid rgba(44,24,16,0.3);
-      transition: all 0.3s;
+      letter-spacing: 0.06em;
+      border: 1px solid var(--border-strong);
+      transition: all 0.25s;
     }
 
     .btn-ghost:hover {
-      border-color: var(--brown);
-      background: var(--brown);
-      color: var(--cream);
-    }
-
-    .hero-visual {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero-image-box {
-      width: 100%;
-      max-width: 420px;
-      aspect-ratio: 4/5;
+      border-color: var(--ink);
       background: var(--cream-dark);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 48px;
+      left: 80px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(44,24,16,0.08);
-    }
-
-    .hero-image-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 4rem;
-      font-weight: 600;
-      color: var(--brown-light);
-      opacity: 0.12;
-      writing-mode: vertical-rl;
-    }
-
-    /* 通用 */
-    .section {
-      padding: 100px 80px;
-    }
-
-    .section-eyebrow {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
+      gap: 12px;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--brown-light);
-      margin-bottom: 16px;
-      opacity: 0.6;
+      color: var(--ink-light);
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1s;
+    }
+
+    .hero-scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--ink-light);
+      opacity: 0.3;
+    }
+
+    /* Section common */
+    section {
+      padding: 120px 80px;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 20px;
     }
 
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 3.5vw, 3rem);
-      font-weight: 600;
-      line-height: 1.2;
-      margin-bottom: 48px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 64px;
+      max-width: 640px;
     }
 
+    .section-title em {
+      font-style: italic;
+      color: var(--ink-light);
+    }
+
+    /* Divider */
     .divider {
       height: 1px;
-      background: rgba(44,24,16,0.12);
+      background: var(--border);
       margin: 0 80px;
     }
 
-    /* 品类导航 */
+    /* Categories */
     .categories {
-      padding: 80px;
-      background: var(--white);
-    }
-
-    .categories-header {
-      margin-bottom: 48px;
+      background: var(--cream);
+      padding: 100px 80px;
     }
 
     .categories-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 2px;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
     }
 
     .category-card {
       background: var(--cream);
-      padding: 40px 24px;
+      padding: 48px 32px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s;
       cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
     }
 
-    .category-card:hover {
-      background: var(--brown);
-      color: var(--cream);
+    .category-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--ink);
+      opacity: 0;
+      transition: opacity 0.3s;
     }
 
-    .category-card:hover .category-emoji,
-    .category-card:hover .category-name,
-    .category-card:hover .category-count {
-      color: var(--cream);
-    }
+    .category-card:hover::after { opacity: 0.03; }
 
     .category-emoji {
-      font-size: 2.5rem;
-      margin-bottom: 16px;
+      font-size: 2rem;
+      margin-bottom: 20px;
       display: block;
-      transition: color 0.3s;
     }
 
     .category-name {
-      font-weight: 500;
-      font-size: 1rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
       margin-bottom: 8px;
-      transition: color 0.3s;
     }
 
-    .category-count {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.85rem;
-      font-style: italic;
-      color: var(--brown-light);
-      opacity: 0.6;
-      transition: color 0.3s;
+    .category-desc {
+      font-size: 0.75rem;
+      color: var(--ink-light);
+      line-height: 1.5;
     }
 
-    /* 找专属口味测试 */
+    /* Quiz */
     .quiz {
-      background: var(--brown);
+      background: var(--ink);
       color: var(--cream);
-      padding: 100px 80px;
-    }
-
-    .quiz-inner {
+      padding: 120px 80px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 120px;
       align-items: center;
     }
 
-    .quiz-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 600;
-      line-height: 1.2;
+    .quiz-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.4);
       margin-bottom: 24px;
     }
 
+    .quiz-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 32px;
+    }
+
+    .quiz-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
     .quiz-desc {
-      font-size: 1rem;
+      font-size: 0.9rem;
       line-height: 1.9;
-      opacity: 0.7;
+      color: rgba(250,249,247,0.55);
       margin-bottom: 40px;
     }
 
     .quiz-steps {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-bottom: 40px;
+      gap: 20px;
+      margin-bottom: 48px;
     }
 
     .quiz-step {
       display: flex;
       align-items: center;
       gap: 16px;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
+      color: rgba(250,249,247,0.7);
     }
 
     .quiz-step-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
       color: var(--accent);
-      width: 32px;
-    }
-
-    .quiz-cta {
-      display: inline-block;
-      padding: 16px 40px;
-      background: var(--accent);
-      color: var(--white);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: 1px solid var(--accent);
-      transition: all 0.3s;
-    }
-
-    .quiz-cta:hover {
-      background: transparent;
-      color: var(--accent);
+      width: 28px;
     }
 
     .quiz-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
       padding: 48px;
     }
 
     .quiz-card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 8px;
     }
 
-    .quiz-card-question {
-      font-size: 0.95rem;
-      line-height: 1.8;
-      opacity: 0.7;
-      margin-bottom: 24px;
+    .quiz-card-q {
+      font-size: 0.8rem;
+      color: rgba(250,249,247,0.4);
+      margin-bottom: 28px;
     }
 
-    .quiz-card-options {
+    .quiz-options {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 8px;
     }
 
     .quiz-option {
-      padding: 14px 20px;
+      padding: 14px 18px;
       background: transparent;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: var(--cream);
-      font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(250,249,247,0.7);
+      font-size: 0.85rem;
       text-align: left;
       cursor: pointer;
-      transition: all 0.2s;
       font-family: inherit;
+      transition: all 0.2s;
     }
 
     .quiz-option:hover {
-      background: var(--accent);
-      border-color: var(--accent);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.2);
+      color: var(--cream);
     }
 
-    /* 产品 */
+    /* Products */
     .products {
-      padding: 100px 80px;
       background: var(--cream);
+      padding: 120px 80px;
     }
 
     .products-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 48px;
+      margin-bottom: 64px;
     }
 
-    .products-link {
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--brown);
+    .products-more {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--ink-light);
       text-decoration: none;
-      border-bottom: 1px solid var(--brown);
-      padding-bottom: 2px;
-      transition: all 0.2s;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
     }
 
-    .products-link:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
+    .products-more:hover { color: var(--ink); }
 
     .products-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
     }
 
     .product-card {
-      background: var(--white);
-      padding: 40px 28px;
-      transition: all 0.3s;
+      background: var(--cream);
+      padding: 48px 36px;
+      transition: background 0.3s;
     }
 
-    .product-card:hover {
-      background: var(--brown);
-      color: var(--cream);
-    }
+    .product-card:hover { background: var(--cream-dark); }
 
     .product-tag {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 16px;
-      font-style: italic;
+      margin-bottom: 20px;
     }
 
     .product-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      line-height: 1.2;
-      margin-bottom: 12px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 14px;
     }
 
     .product-desc {
       font-size: 0.85rem;
       line-height: 1.7;
-      opacity: 0.65;
-      margin-bottom: 24px;
+      color: var(--ink-light);
+      margin-bottom: 28px;
     }
 
     .product-footer {
@@ -479,39 +495,42 @@
     }
 
     .product-price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+    }
+
+    .product-meta {
+      font-size: 0.72rem;
+      color: var(--ink-light);
+      opacity: 0.6;
+      margin-top: 2px;
     }
 
     .product-link {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--ink-light);
       text-decoration: none;
-      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 6px;
       transition: color 0.2s;
     }
 
-    .product-card:hover .product-link { color: var(--cream); }
+    .product-link:hover { color: var(--ink); }
 
-    .product-meta {
-      font-size: 0.75rem;
-      opacity: 0.5;
-      margin-top: 4px;
-    }
-
-    /* 大家印象 */
+    /* Impressions */
     .impressions {
-      padding: 100px 80px;
-      background: var(--white);
+      background: var(--cream-dark);
+      padding: 120px 80px;
     }
 
     .impressions-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 48px;
+      margin-bottom: 64px;
     }
 
     .impressions-grid {
@@ -522,192 +541,192 @@
 
     .impression-card {
       background: var(--cream);
-      padding: 36px;
-      border: 1px solid rgba(44,24,16,0.08);
+      padding: 40px 36px;
+      border: 1px solid var(--border);
     }
 
     .impression-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
       font-style: italic;
-      line-height: 1.6;
-      margin-bottom: 24px;
-      color: var(--brown);
+      line-height: 1.65;
+      color: var(--ink);
+      margin-bottom: 28px;
     }
 
     .impression-author {
-      font-size: 0.85rem;
-      color: var(--brown-light);
-      opacity: 0.7;
+      font-size: 0.78rem;
+      color: var(--ink-light);
     }
 
     .impression-product {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--accent);
       margin-top: 4px;
     }
 
-    /* 透明度 */
+    /* Transparency */
     .transparency {
-      padding: 100px 80px;
       background: var(--cream);
+      padding: 120px 80px;
     }
 
-    .transparency-inner {
+    .transparency-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .transparency-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 600;
-      line-height: 1.2;
-      margin-bottom: 24px;
-    }
-
-    .transparency-title em {
-      font-style: italic;
-      color: var(--accent);
+      gap: 120px;
+      align-items: start;
     }
 
     .transparency-desc {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       line-height: 1.9;
-      color: var(--brown-light);
-      margin-bottom: 32px;
+      color: var(--ink-light);
+      margin-top: 28px;
+      margin-bottom: 40px;
     }
 
     .transparency-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 0;
     }
 
     .transparency-item {
       display: flex;
       justify-content: space-between;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(44,24,16,0.1);
-      font-size: 0.9rem;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
     }
 
-    .transparency-item-name { font-weight: 500; }
+    .transparency-item:first-child { border-top: 1px solid var(--border); }
 
-    .transparency-item-source {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.85rem;
+    .transparency-source {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.82rem;
       font-style: italic;
-      color: var(--brown-light);
-      opacity: 0.7;
+      color: var(--ink-light);
     }
 
-    /* 社区 */
+    /* Community */
     .community {
-      padding: 100px 80px;
-      background: var(--brown);
+      background: var(--ink);
       color: var(--cream);
+      padding: 120px 80px;
       text-align: center;
     }
 
     .community-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 600;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 400;
       margin-bottom: 20px;
     }
 
     .community-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-style: italic;
-      opacity: 0.65;
-      margin-bottom: 40px;
+      font-size: 0.9rem;
+      color: rgba(250,249,247,0.45);
+      margin-bottom: 48px;
     }
 
     .community-cta {
-      display: inline-block;
-      padding: 16px 40px;
-      background: var(--accent);
-      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 36px;
+      border: 1px solid rgba(250,249,247,0.2);
+      color: var(--cream);
       text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: 1px solid var(--accent);
-      transition: all 0.3s;
-      margin-bottom: 16px;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      transition: all 0.25s;
     }
 
     .community-cta:hover {
-      background: transparent;
+      border-color: var(--accent);
       color: var(--accent);
     }
 
-    /* 页脚 */
+    /* Footer */
     footer {
       background: var(--cream-dark);
-      padding: 60px 80px;
-      text-align: center;
+      padding: 64px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
     }
 
     .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: var(--brown);
-      margin-bottom: 12px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--ink);
+      text-decoration: none;
     }
 
-    .footer-logo span {
-      font-weight: 400;
-      font-style: italic;
-    }
-
-    .footer-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.95rem;
-      font-style: italic;
-      color: var(--brown-light);
-      margin-bottom: 32px;
-    }
+    .footer-logo em { font-style: italic; color: var(--ink-light); }
 
     .footer-copy {
-      font-size: 0.75rem;
-      color: var(--brown-light);
+      font-size: 0.72rem;
+      color: var(--ink-light);
       opacity: 0.5;
     }
 
-    /* 响应式 */
+    /* Animations */
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
     @media (max-width: 1024px) {
       .categories-grid { grid-template-columns: repeat(3, 1fr); }
+      .quiz { grid-template-columns: 1fr; gap: 64px; }
       .products-grid { grid-template-columns: 1fr 1fr; }
+      .transparency-grid { grid-template-columns: 1fr; gap: 64px; }
       .impressions-grid { grid-template-columns: 1fr 1fr; }
-      .quiz-inner { grid-template-columns: 1fr; gap: 48px; }
-      .transparency-inner { grid-template-columns: 1fr; gap: 48px; }
     }
 
     @media (max-width: 768px) {
       nav { padding: 0 24px; }
-      nav ul { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
-      .hero-visual { display: none; }
-      .section, .categories, .quiz, .products, .impressions, .transparency, .community { padding: 60px 24px; }
+      nav .nav-links { display: none; }
+      .hero, section { padding: 80px 24px; }
+      .hero-scroll { left: 24px; }
+      .divider { margin: 0 24px; }
+      .categories { padding: 64px 24px; }
       .categories-grid { grid-template-columns: 1fr 1fr; }
+      .products { padding: 64px 24px; }
       .products-grid { grid-template-columns: 1fr; }
+      .impressions { padding: 64px 24px; }
       .impressions-grid { grid-template-columns: 1fr; }
-      footer { padding: 40px 24px; }
+      .transparency { padding: 64px 24px; }
+      .quiz { padding: 64px 24px; }
+      .community { padding: 64px 24px; }
+      footer { padding: 40px 24px; flex-direction: column; gap: 16px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="/" class="logo">记忆<span> · 面包</span></a>
-    <ul>
+    <a href="/" class="nav-logo">记忆<em>·</em>面包</a>
+    <ul class="nav-links">
       <li><a href="#categories">品类</a></li>
       <li><a href="#quiz">测口味</a></li>
       <li><a href="#products">产品</a></li>
@@ -718,137 +737,143 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-content">
-      <div class="hero-eyebrow">云南 · 昆明 · 2026</div>
-      <h1 class="hero-title">记忆中</h1>
-      <div class="hero-title-sub">一味</div>
-      <p class="hero-desc">
-        不迎合低价口味，不妥协于效率成本。<br>
-        每一款出品，都是我们愿意每天吃、放心给孩子吃的东西。
-      </p>
-      <div class="hero-cta">
-        <a href="#quiz" class="btn-primary">测专属口味</a>
-        <a href="#categories" class="btn-ghost">浏览品类</a>
-      </div>
+    <div class="hero-eyebrow">云南 · 昆明 · 2026</div>
+    <h1 class="hero-title">记忆中</h1>
+    <div class="hero-title-sub">一味</div>
+    <p class="hero-desc">
+      不迎合低价口味，不妥协于效率成本。<br>
+      每一款出品，都是我们愿意每天吃、放心给孩子吃的东西。
+    </p>
+    <div class="hero-cta">
+      <a href="#quiz" class="btn-primary">
+        测专属口味
+        <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+      </a>
+      <a href="#products" class="btn-ghost">
+        浏览产品
+      </a>
     </div>
-    <div class="hero-visual">
-      <div class="hero-image-box">
-        <div class="hero-image-text">Mémoire</div>
-      </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      向下探索
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- 品类导航 -->
+  <!-- Categories -->
   <section class="categories" id="categories">
-    <div class="categories-header">
-      <div class="section-eyebrow">Our Selection</div>
-      <h2 class="section-title">找到你的那一款</h2>
-    </div>
+    <div class="section-label">Our Selection</div>
+    <h2 class="section-title">找到你的<em>那一款</em></h2>
     <div class="categories-grid">
       <div class="category-card">
         <span class="category-emoji">🍞</span>
         <div class="category-name">甜面包</div>
-        <div class="category-count">柔软甜蜜 · 日常小确幸</div>
+        <div class="category-desc">柔软甜蜜<br>日常小确幸</div>
       </div>
       <div class="category-card">
         <span class="category-emoji">🥖</span>
         <div class="category-name">欧包</div>
-        <div class="category-count">外脆内软 · 麦香悠长</div>
+        <div class="category-desc">外脆内软<br>麦香悠长</div>
       </div>
       <div class="category-card">
         <span class="category-emoji">🍞</span>
         <div class="category-name">吐司</div>
-        <div class="category-count">百搭基础 · 变化无穷</div>
+        <div class="category-desc">百搭基础<br>变化无穷</div>
       </div>
       <div class="category-card">
         <span class="category-emoji">🥘</span>
         <div class="category-name">料理面包</div>
-        <div class="category-count">烹饪搭档 · 创意无限</div>
+        <div class="category-desc">烹饪搭档<br>创意无限</div>
       </div>
       <div class="category-card">
         <span class="category-emoji">💪</span>
         <div class="category-name">减脂专区</div>
-        <div class="category-count">低卡高纤 · 轻体无负担</div>
+        <div class="category-desc">低卡高纤<br>轻体无负担</div>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- 找专属口味测试 -->
+  <!-- Quiz -->
   <section class="quiz" id="quiz">
-    <div class="quiz-inner">
-      <div>
-        <div class="section-eyebrow" style="color: rgba(245,240,232,0.5);">Find Your Taste</div>
-        <h2 class="quiz-title">不知道从哪款开始？</h2>
-        <p class="quiz-desc">
-          每个人对口味的偏好都不同。我们设计了简单的小测试，帮你找到最适合自己的面包。
-        </p>
-        <div class="quiz-steps">
-          <div class="quiz-step">
-            <span class="quiz-step-num">01</span>
-            <span>回答3个简单问题</span>
-          </div>
-          <div class="quiz-step">
-            <span class="quiz-step-num">02</span>
-            <span>了解你的口味偏好</span>
-          </div>
-          <div class="quiz-step">
-            <span class="quiz-step-num">03</span>
-            <span>获得专属推荐</span>
-          </div>
+    <div>
+      <div class="quiz-label">Find Your Taste</div>
+      <h2 class="quiz-title">不知道从<em>哪款</em>开始？</h2>
+      <p class="quiz-desc">
+        每个人对口味的偏好都不同。我们设计了简单的小测试，帮你找到最适合自己的面包。回答3个问题，获得专属推荐。
+      </p>
+      <div class="quiz-steps">
+        <div class="quiz-step">
+          <span class="quiz-step-num">01</span>
+          <span>回答3个简单问题</span>
         </div>
-        <a href="#quiz" class="quiz-cta">开始测试</a>
+        <div class="quiz-step">
+          <span class="quiz-step-num">02</span>
+          <span>了解你的口味偏好</span>
+        </div>
+        <div class="quiz-step">
+          <span class="quiz-step-num">03</span>
+          <span>获得专属推荐</span>
+        </div>
       </div>
-      <div class="quiz-card">
-        <div class="quiz-card-title">小试一下 · 第一题</div>
-        <p class="quiz-card-question">你更喜欢哪种口感？</p>
-        <div class="quiz-card-options">
-          <button class="quiz-option">🫐 软软的，像日式牛奶面包</button>
-          <button class="quiz-option">🥖 扎实的，有嚼劲的</button>
-          <button class="quiz-option">🍞 外脆内软，有惊喜感</button>
-          <button class="quiz-option">🥐 酥脆的，黄油香浓郁</button>
-        </div>
+      <a href="#quiz" class="btn-primary" style="background: var(--accent); border-color: var(--accent);">
+        开始测试
+        <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+      </a>
+    </div>
+    <div class="quiz-card">
+      <div class="quiz-card-title">小试一下 · 第一题</div>
+      <div class="quiz-card-q">你更喜欢哪种口感？</div>
+      <div class="quiz-options">
+        <button class="quiz-option">🫐 软软的，像日式牛奶面包</button>
+        <button class="quiz-option">🥖 扎实的，有嚼劲的</button>
+        <button class="quiz-option">🍞 外脆内软，有惊喜感</button>
+        <button class="quiz-option">🥐 酥脆的，黄油香浓郁</button>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- 产品列表 -->
+  <!-- Products -->
   <section class="products" id="products">
     <div class="products-header">
       <div>
-        <div class="section-eyebrow">Our Products</div>
+        <div class="section-label">Our Products</div>
         <h2 class="section-title">产品列表</h2>
       </div>
-      <a href="/archives/" class="products-link">查看全部烘焙日记 →</a>
+      <a href="/archives/" class="products-more">
+        查看全部日记
+        <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+      </a>
     </div>
     <div class="products-grid">
       <div class="product-card">
         <div class="product-tag">全麦 · 蜂蜜 · 欧包</div>
         <h3 class="product-name">云南百花蜜<br>全麦面包</h3>
-        <p class="product-desc">外脆内软，蜜香浓郁。云南百花蜜代替普通糖。</p>
+        <p class="product-desc">外脆内软，蜜香浓郁。云南百花蜜代替普通糖，保留全麦麸皮。</p>
         <div class="product-footer">
           <div>
             <div class="product-price">¥38</div>
             <div class="product-meta">245 kcal / 100g</div>
           </div>
-          <a href="/2026/07/05/honey-whole-wheat-bread/" class="product-link">看日记 →</a>
+          <a href="/2026/07/05/honey-whole-wheat-bread/" class="product-link">
+            看日记 <i data-lucide="arrow-right" style="width:12px;height:12px;"></i>
+          </a>
         </div>
       </div>
       <div class="product-card">
         <div class="product-tag">酸种 · 天然酵母 · 欧包</div>
         <h3 class="product-name">天然酵母<br>乡村面包</h3>
-        <p class="product-desc">外脆内软，酸种风味，麦香悠长。天然酵母培养。</p>
+        <p class="product-desc">外脆内软，酸种风味，麦香悠长。天然酵母培养，风味更丰富。</p>
         <div class="product-footer">
           <div>
             <div class="product-price">¥42</div>
             <div class="product-meta">268 kcal / 100g</div>
           </div>
-          <a href="/2026/07/03/natural-leven-country-bread/" class="product-link">看日记 →</a>
+          <a href="/2026/07/03/natural-leven-country-bread/" class="product-link">
+            看日记 <i data-lucide="arrow-right" style="width:12px;height:12px;"></i>
+          </a>
         </div>
       </div>
       <div class="product-card">
@@ -860,7 +885,9 @@
             <div class="product-price">¥28 / 8块</div>
             <div class="product-meta">85 kcal / 块</div>
           </div>
-          <a href="/2026/07/01/coconut-cookies/" class="product-link">看日记 →</a>
+          <a href="/2026/07/01/coconut-cookies/" class="product-link">
+            看日记 <i data-lucide="arrow-right" style="width:12px;height:12px;"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -868,89 +895,109 @@
 
   <div class="divider"></div>
 
-  <!-- 大家印象 -->
+  <!-- Impressions -->
   <section class="impressions" id="impressions">
     <div class="impressions-header">
       <div>
-        <div class="section-eyebrow">Community</div>
+        <div class="section-label">Community</div>
         <h2 class="section-title">大家印象</h2>
       </div>
-      <a href="/feedback/" class="products-link">分享你的印象 →</a>
+      <a href="/feedback/" class="products-more">
+        分享你的印象 →
+      </a>
     </div>
     <div class="impressions-grid">
       <div class="impression-card">
         <p class="impression-quote">"终于找到一款吃完不会胃胀的面包，酸种发酵真的很不一样。"</p>
-        <div class="impression-author">@小红书用户 · 茜茜</div>
-        <div class="impression-product">→ 天然酵母乡村面包</div>
+        <div class="impression-author">@茜茜</div>
+        <div class="impression-product">天然酵母乡村面包</div>
       </div>
       <div class="impression-card">
         <p class="impression-quote">"给孩子吃很放心，配料表干净得让人感动。"</p>
-        <div class="impression-author">@昆明妈妈 · 豆豆妈</div>
-        <div class="impression-product">→ 云南百花蜜全麦面包</div>
+        <div class="impression-author">@豆豆妈</div>
+        <div class="impression-product">云南百花蜜全麦面包</div>
       </div>
       <div class="impression-card">
         <p class="impression-quote">"减脂期吃这个曲奇，一点罪恶感都没有，推荐给闺蜜了。"</p>
-        <div class="impression-author">@健身爱好者 · 阿雅</div>
-        <div class="impression-product">→ 椰子油软曲奇</div>
+        <div class="impression-author">@阿雅</div>
+        <div class="impression-product">椰子油软曲奇</div>
       </div>
     </div>
   </section>
 
   <div class="divider"></div>
 
-  <!-- 配料透明 -->
+  <!-- Transparency -->
   <section class="transparency" id="transparency">
-    <div class="transparency-inner">
-      <div>
-        <div class="section-eyebrow">Full Transparency</div>
-        <h2 class="transparency-title">每一个数字<br>都有<em>依据</em></h2>
-        <p class="transparency-desc">
-          我们的配料表没有"等量配料"、"风味添加剂"这类模糊描述。
-          每款产品的热量都标注来源和计算方式。知情选择，放心吃。
-        </p>
-        <a href="#products" class="btn-primary" style="background: var(--accent); border-color: var(--accent);">查看配料</a>
+    <div>
+      <div class="section-label">Full Transparency</div>
+      <h2 class="section-title">每一个数字<br>都有<em>依据</em></h2>
+      <p class="transparency-desc">
+        我们的配料表没有"等量配料"、"风味添加剂"这类模糊描述。
+        每款产品的热量都标注来源和计算方式。知情选择，放心吃。
+      </p>
+      <a href="#products" class="btn-primary">
+        查看配料
+        <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+      </a>
+    </div>
+    <div class="transparency-list">
+      <div class="transparency-item">
+        <span>云南百花蜜</span>
+        <span class="transparency-source">云南·西双版纳</span>
       </div>
-      <div class="transparency-list">
-        <div class="transparency-item">
-          <span class="transparency-item-name">云南百花蜜</span>
-          <span class="transparency-item-source">云南·西双版纳</span>
-        </div>
-        <div class="transparency-item">
-          <span class="transparency-item-name">高筋全麦粉</span>
-          <span class="transparency-item-source">有机认证</span>
-        </div>
-        <div class="transparency-item">
-          <span class="transparency-item-name">特级初榨橄榄油</span>
-          <span class="transparency-item-source">冷榨进口</span>
-        </div>
-        <div class="transparency-item">
-          <span class="transparency-item-name">天然酵母（鲁邦种）</span>
-          <span class="transparency-item-source">自养·零添加</span>
-        </div>
-        <div class="transparency-item">
-          <span class="transparency-item-name">赤藓糖醇</span>
-          <span class="transparency-item-source">不参与血糖代谢</span>
-        </div>
-        <div class="transparency-item">
-          <span class="transparency-item-name">冷榨椰子油</span>
-          <span class="transparency-item-source">泰国·特级初榨</span>
-        </div>
+      <div class="transparency-item">
+        <span>高筋全麦粉</span>
+        <span class="transparency-source">有机认证</span>
+      </div>
+      <div class="transparency-item">
+        <span>特级初榨橄榄油</span>
+        <span class="transparency-source">冷榨进口</span>
+      </div>
+      <div class="transparency-item">
+        <span>天然酵母（鲁邦种）</span>
+        <span class="transparency-source">自养·零添加</span>
+      </div>
+      <div class="transparency-item">
+        <span>赤藓糖醇</span>
+        <span class="transparency-source">不参与血糖代谢</span>
+      </div>
+      <div class="transparency-item">
+        <span>冷榨椰子油</span>
+        <span class="transparency-source">泰国·特级初榨</span>
       </div>
     </div>
   </section>
 
-  <!-- 社区 -->
+  <!-- Community -->
   <section class="community" id="community">
     <h2 class="community-title">加入吃货社区</h2>
     <p class="community-sub">汇聚口味相投的人，分享记忆中的味道，共同成长</p>
-    <a href="/feedback/" class="community-cta">给我留言反馈</a>
+    <a href="/feedback/" class="community-cta">
+      给我留言反馈
+      <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+    </a>
   </section>
 
   <footer>
-    <div class="footer-logo">记忆<span> · 面包</span></div>
-    <p class="footer-sub">好食材，透明配料，回归身体本身的好吃</p>
+    <a href="/" class="footer-logo">记忆<em>·</em>面包</a>
     <p class="footer-copy">© 2026 记忆面包 · 昆明</p>
   </footer>
 
+  <script>
+    // Init Lucide icons
+    lucide.createIcons();
+
+    // Scroll fade-in animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
